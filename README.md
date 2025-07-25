@@ -1,115 +1,117 @@
-🧠 BG3 AI Voting Bots
-This project contains a collection of AI-powered Discord bots based on companions from Baldur’s Gate 3. Each bot represents a unique character — Shadowheart, Karlach, Astarion, Gale, Wyll, and Lae'zel — and participates in voting sessions to help drive group decisions during a custom BG3 campaign run by the Dungeon Master (DM).
+# 🧐 BG3 AI Voting Bots
 
-🎯 Purpose
+This project contains a collection of AI-powered Discord bots based on companions from *Baldur’s Gate 3*. Each bot represents a unique character — Shadowheart, Karlach, Astarion, Gale, Wyll, and Lae'zel — and participates in voting sessions to help drive group decisions during a custom BG3 campaign run by the Dungeon Master (DM).
+
+## 🎯 Purpose
+
 The goal is to bring roleplay and personality-driven chaos to the party's choices. These bots simulate the opinions and behavior of their in-game counterparts, voting on Discord polls with unique logic and personality flair.
 
-🤖 Bots Included
+## 🤖 Bots Included
+
 Each bot is modeled after a BG3 companion and uses AI to "think" before voting:
 
-🖤 ShadowheartBot – Mysterious, logical, and occasionally sarcastic.
+* **🖤 ShadowheartBot** – Mysterious, logical, and occasionally sarcastic.
+* **🔥 KarlachBot** – Chaotic good energy, driven by emotion.
+* **🧙‍♂️ AstarionBot** – Arrogant, stylish, and morally flexible.
+* **🧙 GaleBot** – Intellectual and verbose, with an eye toward arcane balance.
+* **🔪 WyllBot** – Heroic and morally grounded, but dramatic.
+* **⚔️ Lae'zelBot** – Blunt, aggressive, and honor-bound.
 
-🔥 KarlachBot – Chaotic good energy, driven by emotion.
+## 🛠️ Features
 
-🧛‍♂️ AstarionBot – Arrogant, stylish, and morally flexible.
+* **Personality-Driven Voting**: Each bot makes choices based on character traits and context.
+* **On-Demand Launching**: Bots are only activated when needed via a launcher script.
+* **Poll Participation**: Bots scan for Discord polls in a specific channel and cast votes accordingly.
+* **ChatGPT Integration**: Uses OpenAI’s API to simulate personalities and decisions.
+* **Modular Setup**: Bots are organized in separate folders, each encapsulating its own logic.
 
-🧙 GaleBot – Intellectual and verbose, with an eye toward arcane balance.
+## 🧪 How It Works
 
-🗡️ WyllBot – Heroic and morally grounded, but dramatic.
+1. The DM posts a poll in Discord.
+2. Bots fetch the latest poll, interpret the options, and "discuss" internally.
+3. Each bot makes a decision based on its logic and sends its vote via the Discord API.
+4. Votes are cast, results are logged (optionally), and drama ensues.
 
-⚔️ Lae'zelBot – Blunt, aggressive, and honor-bound.
+## 🚀 Usage
 
-🛠️ Features
-Personality-Driven Voting: Each bot makes choices based on character traits and context.
+### Prerequisites
 
-On-Demand Launching: Bots are only activated when needed via a launcher script.
+* Python 3.8+
+* OpenAI API key
+* Discord bot tokens for each character
+* Installed dependencies: `discord.py`, `openai`, `python-dotenv`, etc.
 
-Poll Participation: Bots scan for Discord polls in a specific channel and cast votes accordingly.
+### Running Bots
 
-ChatGPT Integration: Uses OpenAI’s API to simulate personalities and decisions.
+Each bot is run individually by navigating to its folder and executing:
 
-Modular Setup: Bots are run independently, allowing for easy customization and expansion.
+```bash
+python bot.py
+```
 
-🧪 How It Works
-The DM posts a poll in Discord.
+Or use the unified launcher to start all bots:
 
-Bots fetch the latest poll, interpret the options, and "discuss" internally.
+```bash
+python launcher.py
+```
 
-Each bot makes a decision based on its logic and sends its vote via the Discord API.
+### Environment Setup
 
-Votes are cast, results are logged (optionally), and drama ensues.
+Each bot typically has its own `.env` file within its folder:
 
-🚀 Usage
-Prerequisites
-Python 3.8+
-
-OpenAI API key
-
-Discord bot tokens for each character
-
-Installed dependencies: discord.py, openai, python-dotenv, etc.
-
-Running Bots
-Each bot is run individually via:
-
-bash
-Copy
-Edit
-python shadowheart_bot.py
-Or use the launcher to start all bots simultaneously (in sequence or threads):
-
-bash
-Copy
-Edit
-python bot_launcher.py
-Environment Setup
-Create a .env file with the following format:
-
-makefile
-Copy
-Edit
-DISCORD_TOKEN_SHADOWHEART=your_token_here
-DISCORD_TOKEN_KARLACH=your_token_here
-...
+```
+DISCORD_TOKEN=your_token_here
 OPENAI_API_KEY=your_openai_key
-GUILD_ID=your_guild_id
-CHANNEL_ID=poll_channel_id
-📁 Project Structure
-bash
-Copy
-Edit
+```
+
+## 📁 Project Structure
+
+```
 bg3-bots/
-├── shadowheart_bot.py
-├── karlach_bot.py
-├── astarion_bot.py
-├── gale_bot.py
-├── wyll_bot.py
-├── laezel_bot.py
+├── astarion/
+│   ├── bot.py
+│   ├── prompt.py
+│   └── .env
+├── shadowheart/
+│   ├── bot.py
+│   ├── prompt.py
+│   └── .env
+├── karlach/
+│   ├── bot.py
+│   ├── prompt.py
+│   └── .env
+├── gale/
+│   ├── bot.py
+│   ├── prompt.py
+│   └── .env
+├── wyll/
+│   ├── bot.py
+│   ├── prompt.py
+│   └── .env
+├── laezel/
+│   ├── bot.py
+│   ├── prompt.py
+│   └── .env
 ├── bot_launcher.py
-├── utils/
-│   └── personality_logic.py
-├── .env
 └── README.md
-🎮 Customization
+```
+
+## 🎮 Customization
+
 Want to add more bots or change personalities?
 
-Clone an existing bot file
+* Copy an existing bot folder
+* Modify the `prompt.py` to reflect the new personality
+* Update the `.env` file with the appropriate bot token and settings
+* (Optional) Update `bot_launcher.py` if using a launcher
 
-Change the name and traits
+## 🧠 Future Ideas
 
-Update the .env and launcher to include your new bot
-
-You can also tweak the personality prompts in personality_logic.py to tune how each bot interprets poll questions.
-
-🧠 Future Ideas
-Log conversation snippets from each bot
-
-Create "party debates" before voting
-
-Integrate dice rolls for chaotic decisions
-
-Add visuals or voice messages to increase immersion
+* Log conversation snippets from each bot
+* Create "party debates" before voting
+* Integrate dice rolls for chaotic decisions
+* Add visuals or voice messages to increase immersion
 
 🙌 Credits
-Created by [Your Name], inspired by the characters of Baldur’s Gate 3. Bots powered by OpenAI, running in Discord via discord.py.
+Created by Braxton Tillman, inspired by the characters of *Baldur’s Gate 3*. Bots powered by OpenAI, running in Discord via `discord.py`.
 
